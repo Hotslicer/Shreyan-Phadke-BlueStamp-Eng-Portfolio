@@ -3,7 +3,7 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| FirstName LastInitialOnly | School Name | Electrical Engineering | Incoming Senior
+| Shreyan P | Cupertino High School | Mechanical Engineering | Incoming Senior
 
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
@@ -73,6 +73,30 @@ Don't forget to place the link of where to buy each component inside the quotati
 |:--:|:--:|:--:|:--:|
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 |:--:|:--:|:--:|:--:|
+
+# Starter Project
+
+My starter project was a Simon Says game from a building kit. 
+
+BOM
+-ATMega Microcontroller
+-Buzzer
+-0.1uF Cap
+-10k Resistor (2)
+-LEDs (4)
+-Slide Switch (2)
+-Battery Clips (4)
+-AA Batteries (2)
+-Beel
+-Standoffers & Screws (4)
+-Simon PCB Board. 
+
+The assembly was complete in 45 minute and taught me important concepts in soldering various holes and wire connections as well as different hardware such as Speakers, microcontrollers and batteries. One challenge I faced was correctly aligning the LEDs with their polarity. 
+For your first milestone, describe what your project is and how you plan to build it. You can include:
+
+Video:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BwH0mT4WVgo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
