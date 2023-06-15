@@ -5,6 +5,7 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 |:--:|:--:|:--:|:--:|
 | Shreyan P | Cupertino High School | Mechanical Engineering | Incoming Senior
 
+
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)
@@ -21,11 +22,20 @@ For your final milestone, explain the outcome of your project. Key details to in
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Second Milestone
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
+
+For my second milestone I finished the electrical wiring, setup the GRBL 0.9 software and made my pen plotter draw sample images from existing GCode files. The pen plotter uses CNC mill software to turn images into coordiante points. It then moves the tip of the pen through the various coordinate points. A servo at the end lifts the pen when needed to create breaks in the image. Overall the function of the pen plotter has been fulfilled however the next step is to take my own images and convert them into GCode files for the Pen Plotter to draw. 
+
+The most significant challenge I overcame with milestone 2 was the software setup. The X-Code arduino uploader which added the GRBL software to the Arduino UnoMega needed Windows 10, however I used Mac. I tried to use bootcamp utility to get windows on my Mac but after trying 3 different solutions bootcamp ultimately didn't work. I get around this I used my mentors computer to upload the GRBL hex file to the Arduino. 
+
+Another challenge was configuring the Universal GCode Platform (UGS) software to work with the Pen Plotter. I had to manually setup the software to recognize the Arduino and spent 4 hours troubleshooting to make the Aruino motors function from the software inputs. Through the series of firmware debugging I learned more about the software behind CNC machining and about Arduino. 
+
+Ultimately the machine works well and I am surpised by it's precision despite having only the X, Y axis on a UP/DOWN/LEFT/RIGHT control scheme. It is able to draw very precise curved lines and text with great accuracy. 
+
+Milestone 2 Machine Operation:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7r2xqhQgGDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
@@ -79,17 +89,29 @@ Don't forget to place the link of where to buy each component inside the quotati
 My starter project was a Simon Says game from a building kit. 
 
 BOM
--ATMega Microcontroller
--Buzzer
--0.1uF Cap
--10k Resistor (2)
--LEDs (4)
--Slide Switch (2)
--Battery Clips (4)
--AA Batteries (2)
--Beel
--Standoffers & Screws (4)
--Simon PCB Board. 
+
+| **Part** | **Usage** |
+|:--:|:--:|:--:|:--:|
+| Simon PCB Board | "Motherboard" of system. All components connect here |
+|:--:|:--:|:--:|:--:|
+| Buzzer | Used to emit noises and sound effects | 
+|:--:|:--:|:--:|:--:|
+| 0.1uF capacitator | Used to store electrical energy | 
+|:--:|:--:|:--:|:--:|
+| 10k Resistor (2) | Reduces voltage by 10,000 ohms | 
+|:--:|:--:|:--:|:--:|
+| LEDs (4) | Emits light used in system operation | 
+|:--:|:--:|:--:|:--:|
+| Slide Switch (2) | Used to turn the machine on/off and toggle sound | 
+|:--:|:--:|:--:|:--:|
+| Battery Clips (2) | Cathode + Anode used to deliver battery charge | 
+|:--:|:--:|:--:|:--:|
+| AA Batteries (2) | Power Source of the System | 
+|:--:|:--:|:--:|:--:|
+| ATMega Microcontroller | Conducts system operations | 
+|:--:|:--:|:--:|:--:|
+| Standoffers & Screws (4) | Used to mount the button board to the PCB | 
+|:--:|:--:|:--:|:--:|
 
 The assembly was complete in 45 minute and taught me important concepts in soldering various holes and wire connections as well as different hardware such as Speakers, microcontrollers and batteries. One challenge I faced was correctly aligning the LEDs with their polarity. 
 For your first milestone, describe what your project is and how you plan to build it. You can include:
@@ -104,4 +126,3 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
-To watch the BSE tutorial on how to create a portfolio, click here.
