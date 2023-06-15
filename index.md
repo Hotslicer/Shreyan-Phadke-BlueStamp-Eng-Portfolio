@@ -31,15 +31,15 @@ Another challenge was configuring the Universal GCode Platform (UGS) software to
 
 Ultimately the machine works well and I am surpised by it's precision despite having only the X, Y axis on a UP/DOWN/LEFT/RIGHT control scheme. It is able to draw very precise curved lines and text with great accuracy. 
 
-Milestone 2 Machine Operation:
+**Milestone 2 Machine Operation**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7r2xqhQgGDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+**Milestone 2 Video**
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0uyFmvGK-64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # First Milestone
 My first milestone required me to complete the hardware portion of the project. This included the frame,runners, belt system and motors. These parts make the pen-tip be able to freely move in the XY plane. To move in the X-Axis a singular motor runs while to move in the Y-Axis motors move in opposing directions. 
