@@ -101,19 +101,10 @@ static uint8_t gc_check_same_position(float *pos_a, float *pos_b)
   return(true);
 }
          
-// Executes one line of 0-terminated G-Code. The line is assumed to contain only uppercase
-// characters and signed floating point values (no whitespace). Comments and block delete
-// characters have been removed. In this function, all units and positions are converted and 
-// exported to grbl's internal functions in terms of (mm, mm/min) and absolute machine 
-// coordinates, respectively.
+
 uint8_t gc_execute_line(char *line) 
 {
-  /* -------------------------------------------------------------------------------------
-     STEP 1: Initialize parser block struct and copy current g-code state modes. The parser
-     updates these modes and commands as the block line is parser and will only be used and
-     executed after successful error-checking. The parser block struct also contains a block
-     values struct, word tracking variables, and a non-modal commands tracker for the new 
-     block. This struct contains all of the necessary information to execute the block. */
+
      
   memset(&gc_block, 0, sizeof(gc_block)); // Initialize the parser block struct.
   memcpy(&gc_block.modal,&gc_state.modal,sizeof(gc_modal_t)); // Copy current modes
@@ -122,20 +113,7 @@ uint8_t gc_execute_line(char *line)
   uint8_t coord_select = 0; // Tracks G10 P coordinate selection for execution
   float coordinate_data[N_AXIS]; // Multi-use variable to store coordinate data for execution
   float parameter_data[N_AXIS]; // Multi-use variable to store parameter data for execution
-  
-  // Initialize bitflag tracking variables for axis indices compatible operations.
-  uint8_t axis_words = 0; // XYZ tracking
-  uint8_t ijk_words = 0; // IJK tracking 
-
-  // Initialize command and value words variables. Tracks words contained in this block.
-  uint16_t command_words = 0; // G and M command words. Also used for modal group violations.
-  uint16_t value_words = 0; // Value words. 
-
-  /* -------------------------------------------------------------------------------------
-     STEP 2: Import all g-code words in the block line. A g-code word is a letter followed by
-     a number, which can either be a 'G'/'M' command or sets/assigns a command value. Also, 
-     perform initial error-checks for command word modal group violations, for any repeated
-     words, and for negative values set for the value words F, N, P, T, and S. */
+ 
      
   uint8_t word_bit; // Bit-value for assigning tracking variables
   uint8_t char_counter = 0;  
@@ -145,31 +123,7 @@ uint8_t gc_execute_line(char *line)
   uint16_t mantissa = 0;
 
   while (line[char_counter] != 0) { // Loop until no more g-code words in line.
-    
-    // Import the next g-code word, expecting a letter followed by a value. Otherwise, error out.
-    letter = line[char_counter];
-    if((letter < 'A') || (letter > 'Z')) { FAIL(STATUS_EXPECTED_COMMAND_LETTER); } // [Expected word letter]
-    char_counter++;
-    if (!read_float(line, &char_counter, &value)) { FAIL(STATUS_BAD_NUMBER_FORMAT); } // [Expected word value]
-
-    // Convert values to smaller uint8 significand and mantissa values for parsing this word.
-    // NOTE: Mantissa is multiplied by 100 to catch non-integer command values. This is more 
-    // accurate than the NIST gcode requirement of x10 when used for commands, but not quite
-    // accurate enough for value words that require integers to within 0.0001. This should be
-    // a good enough comprimise and catch most all non-integer errors. To make it compliant, 
-    // we would simply need to change the mantissa to int16, but this add compiled flash space.
-    // Maybe update this later. 
-    int_value = trunc(value);
-    mantissa =  round(100*(value - int_value)); // Compute mantissa for Gxx.x commands.
-        // NOTE: Rounding must be used to catch small floating point errors. 
-
-    // Check if the g-code word is supported or errors due to modal group violations or has
-    // been repeated in the g-code block. If ok, update the command or record its value.
-    switch(letter) {
-    
-      /* 'G' and 'M' Command Words: Parse commands and check for modal group violations.
-         NOTE: Modal group numbers are defined in Table 4 of NIST RS274-NGC v3, pg.20 */
-         
+          
       case 'G':
         // Determine 'G' command and its modal group
         switch(int_value) {
@@ -400,30 +354,6 @@ uint8_t gc_execute_line(char *line)
   // Parsing complete!
   
 
-  /* -------------------------------------------------------------------------------------
-     STEP 3: Error-check all commands and values passed in this block. This step ensures all of
-     the commands are valid for execution and follows the NIST standard as closely as possible.
-     If an error is found, all commands and values in this block are dumped and will not update
-     the active system g-code modes. If the block is ok, the active system g-code modes will be
-     updated based on the commands of this block, and signal for it to be executed. 
-     
-     Also, we have to pre-convert all of the values passed based on the modes set by the parsed
-     block. There are a number of error-checks that require target information that can only be
-     accurately calculated if we convert these values in conjunction with the error-checking.
-     This relegates the next execution step as only updating the system g-code modes and 
-     performing the programmed actions in order. The execution step should not require any 
-     conversion calculations and would only require minimal checks necessary to execute.
-  */
-
-  /* NOTE: At this point, the g-code block has been parsed and the block line can be freed.
-     NOTE: It's also possible, at some future point, to break up STEP 2, to allow piece-wise 
-     parsing of the block on a per-word basis, rather than the entire block. This could remove 
-     the need for maintaining a large string variable for the entire block and free up some memory. 
-     To do this, this would simply need to retain all of the data in STEP 1, such as the new block
-     data struct, the modal group and value bitflag tracking variables, and axis array indices 
-     compatible variables. This data contains all of the information necessary to error-check the 
-     new g-code block when the EOL character is received. However, this would break Grbl's startup
-     lines in how it currently works and would require some refactoring to make it compatible.
   */  
   
   // [0. Non-specific/common error-checks and miscellaneous setup]: 
@@ -730,56 +660,7 @@ uint8_t gc_execute_line(char *line)
           
             // Convert radius value to proper units.
             if (gc_block.modal.units == UNITS_MODE_INCHES) { gc_block.values.r *= MM_PER_INCH; }
-            /*  We need to calculate the center of the circle that has the designated radius and passes
-                through both the current position and the target position. This method calculates the following
-                set of equations where [x,y] is the vector from current to target position, d == magnitude of 
-                that vector, h == hypotenuse of the triangle formed by the radius of the circle, the distance to
-                the center of the travel vector. A vector perpendicular to the travel vector [-y,x] is scaled to the 
-                length of h [-y/d*h, x/d*h] and added to the center of the travel vector [x/2,y/2] to form the new point 
-                [i,j] at [x/2-y/d*h, y/2+x/d*h] which will be the center of our arc.
-    
-                d^2 == x^2 + y^2
-                h^2 == r^2 - (d/2)^2
-                i == x/2 - y/d*h
-                j == y/2 + x/d*h
-    
-                                                                     O <- [i,j]
-                                                                  -  |
-                                                        r      -     |
-                                                            -        |
-                                                         -           | h
-                                                      -              |
-                                        [0,0] ->  C -----------------+--------------- T  <- [x,y]
-                                                  | <------ d/2 ---->|
-              
-                C - Current position
-                T - Target position
-                O - center of circle that pass through both C and T
-                d - distance from C to T
-                r - designated radius
-                h - distance from center of CT to O
-    
-                Expanding the equations:
- 
-                d -> sqrt(x^2 + y^2)
-                h -> sqrt(4 * r^2 - x^2 - y^2)/2
-                i -> (x - (y * sqrt(4 * r^2 - x^2 - y^2)) / sqrt(x^2 + y^2)) / 2 
-                j -> (y + (x * sqrt(4 * r^2 - x^2 - y^2)) / sqrt(x^2 + y^2)) / 2
-   
-                Which can be written:
-    
-                i -> (x - (y * sqrt(4 * r^2 - x^2 - y^2))/sqrt(x^2 + y^2))/2
-                j -> (y + (x * sqrt(4 * r^2 - x^2 - y^2))/sqrt(x^2 + y^2))/2
-    
-                Which we for size and speed reasons optimize to:
- 
-                h_x2_div_d = sqrt(4 * r^2 - x^2 - y^2)/sqrt(x^2 + y^2)
-                i = (x - (y * h_x2_div_d))/2
-                j = (y + (x * h_x2_div_d))/2       
-            */      
-
-            // First, use h_x2_div_d to compute 4*h^2 to check if it is negative or r is smaller
-            // than d. If so, the sqrt of a negative number is complex and error out.
+           
             float h_x2_div_d = 4.0 * gc_block.values.r*gc_block.values.r - x*x - y*y;
 
             if (h_x2_div_d < 0) { FAIL(STATUS_GCODE_ARC_RADIUS_ERROR); } // [Arc radius error]
@@ -789,20 +670,7 @@ uint8_t gc_execute_line(char *line)
             // Invert the sign of h_x2_div_d if the circle is counter clockwise (see sketch below)
             if (gc_block.modal.motion == MOTION_MODE_CCW_ARC) { h_x2_div_d = -h_x2_div_d; }  
 
-            /* The counter clockwise circle lies to the left of the target direction. When offset is positive,
-               the left hand circle will be generated - when it is negative the right hand circle is generated.
-          
-                                                                   T  <-- Target position
-                                                   
-                                                                   ^ 
-                        Clockwise circles with this center         |          Clockwise circles with this center will have
-                        will have > 180 deg of angular travel      |          < 180 deg of angular travel, which is a good thing!
-                                                         \         |          /   
-            center of arc when h_x2_div_d is positive ->  x <----- | -----> x <- center of arc when h_x2_div_d is negative
-                                                                   |
-                                                                   |
-                                                   
-                                                                   C  <-- Current position                                
+                           
             */  
             // Negative R is g-code-alese for "I want a circle with more than 180 degrees of travel" (go figure!), 
             // even though it is advised against ever generating such circles in a single line of g-code. By 
@@ -984,130 +852,8 @@ uint8_t gc_execute_line(char *line)
     case NON_MODAL_RESET_COORDINATE_OFFSET: 
       clear_vector(gc_state.coord_offset); // Disable G92 offsets by zeroing offset vector.
       break;
-  }
 
   
-  // [20. Motion modes ]:
-  // NOTE: Commands G10,G28,G30,G92 lock out and prevent axis words from use in motion modes. 
-  // Enter motion modes only if there are axis words or a motion mode command word in the block.
-  gc_state.modal.motion = gc_block.modal.motion;
-  if (gc_state.modal.motion != MOTION_MODE_NONE) {
-    if (axis_command == AXIS_COMMAND_MOTION_MODE) {
-      switch (gc_state.modal.motion) {
-        case MOTION_MODE_SEEK:
-          #ifdef USE_LINE_NUMBERS
-            mc_line(gc_block.values.xyz, -1.0, false, gc_state.line_number);
-          #else
-            mc_line(gc_block.values.xyz, -1.0, false);
-          #endif
-          break;
-        case MOTION_MODE_LINEAR:
-          #ifdef USE_LINE_NUMBERS
-            mc_line(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, gc_state.line_number);
-          #else
-            mc_line(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate);
-          #endif
-          break;
-        case MOTION_MODE_CW_ARC: 
-          #ifdef USE_LINE_NUMBERS
-            mc_arc(gc_state.position, gc_block.values.xyz, gc_block.values.ijk, gc_block.values.r, 
-              gc_state.feed_rate, gc_state.modal.feed_rate, axis_0, axis_1, axis_linear, true, gc_state.line_number);  
-          #else
-            mc_arc(gc_state.position, gc_block.values.xyz, gc_block.values.ijk, gc_block.values.r, 
-              gc_state.feed_rate, gc_state.modal.feed_rate, axis_0, axis_1, axis_linear, true); 
-          #endif
-          break;        
-        case MOTION_MODE_CCW_ARC:
-          #ifdef USE_LINE_NUMBERS
-            mc_arc(gc_state.position, gc_block.values.xyz, gc_block.values.ijk, gc_block.values.r, 
-              gc_state.feed_rate, gc_state.modal.feed_rate, axis_0, axis_1, axis_linear, false, gc_state.line_number);  
-          #else
-            mc_arc(gc_state.position, gc_block.values.xyz, gc_block.values.ijk, gc_block.values.r, 
-              gc_state.feed_rate, gc_state.modal.feed_rate, axis_0, axis_1, axis_linear, false); 
-          #endif
-          break;
-        case MOTION_MODE_PROBE_TOWARD: 
-          // NOTE: gc_block.values.xyz is returned from mc_probe_cycle with the updated position value. So
-          // upon a successful probing cycle, the machine position and the returned value should be the same.
-          #ifdef USE_LINE_NUMBERS
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, false, false, gc_state.line_number);
-          #else
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, false, false);
-          #endif
-          break;
-        case MOTION_MODE_PROBE_TOWARD_NO_ERROR:
-          #ifdef USE_LINE_NUMBERS
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, false, true, gc_state.line_number);
-          #else
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, false, true);
-          #endif
-          break;
-        case MOTION_MODE_PROBE_AWAY:
-          #ifdef USE_LINE_NUMBERS
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, true, false, gc_state.line_number);
-          #else
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, true, false);
-          #endif
-          break;
-        case MOTION_MODE_PROBE_AWAY_NO_ERROR:
-          #ifdef USE_LINE_NUMBERS
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, true, true, gc_state.line_number);
-          #else        
-            mc_probe_cycle(gc_block.values.xyz, gc_state.feed_rate, gc_state.modal.feed_rate, true, true);
-          #endif
-      }
-    
-      // As far as the parser is concerned, the position is now == target. In reality the
-      // motion control system might still be processing the action and the real tool position
-      // in any intermediate location.
-      memcpy(gc_state.position, gc_block.values.xyz, sizeof(gc_block.values.xyz)); // gc_state.position[] = gc_block.values.xyz[]
-    }
-  }
-  
-  // [21. Program flow ]:
-  // M0,M1,M2,M30: Perform non-running program flow actions. During a program pause, the buffer may 
-  // refill and can only be resumed by the cycle start run-time command.
-  gc_state.modal.program_flow = gc_block.modal.program_flow;
-  if (gc_state.modal.program_flow) { 
-	protocol_buffer_synchronize(); // Sync and finish all remaining buffered motions before moving on.
-	if (gc_state.modal.program_flow == PROGRAM_FLOW_PAUSED) {
-	  if (sys.state != STATE_CHECK_MODE) {
-		bit_true_atomic(sys.rt_exec_state, EXEC_FEED_HOLD); // Use feed hold for program pause.
-		protocol_execute_realtime(); // Execute suspend.
-	  }
-	} else { // == PROGRAM_FLOW_COMPLETED
-	  // Upon program complete, only a subset of g-codes reset to certain defaults, according to 
-	  // LinuxCNC's program end descriptions and testing. Only modal groups [G-code 1,2,3,5,7,12]
-	  // and [M-code 7,8,9] reset to [G1,G17,G90,G94,G40,G54,M5,M9,M48]. The remaining modal groups
-	  // [G-code 4,6,8,10,13,14,15] and [M-code 4,5,6] and the modal words [F,S,T,H] do not reset.
-	  gc_state.modal.motion = MOTION_MODE_LINEAR;
-	  gc_state.modal.plane_select = PLANE_SELECT_XY;
-	  gc_state.modal.distance = DISTANCE_MODE_ABSOLUTE;
-	  gc_state.modal.feed_rate = FEED_RATE_MODE_UNITS_PER_MIN;
-	  // gc_state.modal.cutter_comp = CUTTER_COMP_DISABLE; // Not supported.
-	  gc_state.modal.coord_select = 0; // G54
-	  gc_state.modal.spindle = SPINDLE_DISABLE;
-	  gc_state.modal.coolant = COOLANT_DISABLE;
-	  // gc_state.modal.override = OVERRIDE_DISABLE; // Not supported.
-	  
-	  // Execute coordinate change and spindle/coolant stop.
-	  if (sys.state != STATE_CHECK_MODE) {
-		if (!(settings_read_coord_data(gc_state.modal.coord_select,coordinate_data))) { FAIL(STATUS_SETTING_READ_FAIL); } 
-		memcpy(gc_state.coord_system,coordinate_data,sizeof(coordinate_data));
-		spindle_stop();
-		coolant_stop();		
-	  }
-	  
-	  report_feedback_message(MESSAGE_PROGRAM_END);
-	}
-    gc_state.modal.program_flow = PROGRAM_FLOW_RUNNING; // Reset program flow.
-  }
-    
-  // TODO: % to denote start of program.
-  return(STATUS_OK);
-}
-  
-
 }
 ```
 
