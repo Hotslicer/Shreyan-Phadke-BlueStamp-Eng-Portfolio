@@ -6,7 +6,6 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 | Shreyan P | Cupertino High School | Mechanical Engineering | Incoming Senior
 
 
-
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)
@@ -21,6 +20,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 # Second Milestone
 
@@ -39,6 +39,7 @@ Ultimately the machine works well and I am surpised by it's precision despite ha
 
 
 **Milestone 2 Video**
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0uyFmvGK-64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -65,17 +66,6 @@ Main firmware: https://codeshare.io/ZJPjEN
 
 Seperated into different parts of the assembly
 
-# (1) Machine frame
-2 PCS 8mm polished rods 450mm, 2 PCS 8mm polished rods 360mm
-1 PCS 421mm and 4PCS 68mm European standard aluminum profiles in 2020 8 PCS LM8UU linear bearings
-25 PCS Acrylic
-10 PCS F624 flange bearings
-2 PCS synchronous wheels
-Timing belt 1.5m
-1 PCS 3D pen holder
-25 PCS ties
-2 PCS wire fixing straps
-1 PCS Linear guide assembly
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
@@ -97,6 +87,7 @@ Timing belt 1.5m
 |:--:|:--:|:--:|:--:|
 | 3D Pen Holder| 3d printed holder for the pen | N/A | N/A |
 |:--:|:--:|:--:|:--:|
+
 
 # Starter Project
 
@@ -131,4 +122,5 @@ The assembly was complete in 45 minute and taught me important concepts in solde
 For your first milestone, describe what your project is and how you plan to build it. You can include:
 
 Video:
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BwH0mT4WVgo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
