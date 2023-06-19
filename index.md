@@ -66,7 +66,6 @@ Arduino Uno Mega 2236
 ![Schematicimage](Screen Shot 2023-06-19 at 9.11.48 AM.png)
 
 
-
 # Code
 
 For code, I used the GRBL 0.9 software for CNC machines. This software is made to take .gcode files and make the CNC machine execute their command lists. 
@@ -75,8 +74,6 @@ Main firmware: https://codeshare.io/ZJPjEN
 # Bill of Materials
 
 Separated into different parts of the assembly
-
-
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
@@ -131,8 +128,7 @@ BOM
 | Standoffers & Screws (4) | Used to mount the button board to the PCB | 
 |:--:|:--:|:--:|:--:|
 
-The assembly was complete in 45 minute and taught me important concepts in soldering various holes and wire connections as well as different hardware such as Speakers, microcontrollers and batteries. One challenge I faced was correctly aligning the LEDs with their polarity. 
-For your first milestone, describe what your project is and how you plan to build it. You can include:
+The assembly was completed in 45 minutes and taught me important concepts in soldering various holes and wire connections as well as different hardware such as Speakers, microcontrollers, and batteries. One challenge I faced was correctly aligning the LEDs with their polarity. 
 
 Video:
 
