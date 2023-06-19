@@ -5,9 +5,6 @@ Have you ever had a tedious school art project that your struggling to complete 
 |:--:|:--:|:--:|:--:|
 | Shreyan P | Cupertino High School | Mechanical Engineering | Incoming Senior
 
-
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
 ![Headstone Image](logo.svg)
   
 # Final Milestone. 
@@ -26,11 +23,9 @@ To create this final workflow the main challenge I faced was converting the vect
 
 I learned a lot through this process. First I learned about the mechanical aspects of CNC milling, and how a pen can move anywhere in the XY plane just using 2 motors. I also learned about the firmware behind CNC. I learned about .svg files and rasterization, which represent an image as a series of mathematical functions that a computer can understand. I also learned about .gcode files which turn the math functions from .svg files into a series of thousands of coordinate points that the Arduino executes. Finally, I learned about how .gcode files are sent to the machine: through the UGS software. 
 
+# Milestone Video
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/htjaKcD7Y0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Second Milestone
 
