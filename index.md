@@ -1,5 +1,5 @@
 # CNC Pen Plotter
-Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
+Have you ever had a tedious school art project that your struggling to complete at 1:30am? Do you have terrible handwriting that only you can read? Well, fear not! Introducing the CNC Pen Plotter: A machine that uses a mechanism of runners and belts to control a pen on the XY plane using CNC software! To learn more about how the CNC pen plotter was designed and built as well as see it in action read more below! 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -10,12 +10,22 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 
 ![Headstone Image](logo.svg)
   
-# Final Milestone
-For your final milestone, explain the outcome of your project. Key details to include are:
-- What you've accomplished since your previous milestone
-- What your biggest challenges and triumphs were at BSE
-- A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
+# Final Milestone. 
+
+For my final Milestone, my goal was for the pen plotter to be able to draw my own images and be fully functioning. I considered this milestone complete when my plotter drew a complex image of Optimus Prime. The biggest challenge the final milestone presented was successfully converting images into .gcode files. This is a multi-step process:
+
+1: Find an image, preferably line art/cartoon style
+2: Rasterize the image using https://picsvg.com/
+3: Upload the image to Inkscape v0.92.5
+4: Upload the DoesBotAX4 extension to Inkscape
+5: Convert the vector into a .gcode file for a servo-driven CNC
+6: Upload the .gcode file into UGS (Universal GCode Sender) and connect the machine
+7: Run UGS
+
+To create this final workflow the main challenge I faced was converting the vector .svg images into CNC coordinates. Almost all CNC compilers used commands for a separate motor to control the Z axis. However, my pen plotter only used a servo for Z-Axis. I tried several software, none of which worked. Finally, I found an extension for Inkscape, however, it was an older version of the software so I had to learn software rollback. 
+
+I learned a lot through this process. First I learned about the mechanical aspects of CNC milling, and how a pen can move anywhere in the XY plane just using 2 motors. I also learned about the firmware behind CNC. I learned about .svg files and rasterization, which represent an image as a series of mathematical functions that a computer can understand. I also learned about .gcode files which turn the math functions from .svg files into a series of thousands of coordinate points that the Arduino executes. Finally, I learned about how .gcode files are sent to the machine: through the UGS software. 
+
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
@@ -24,13 +34,13 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 # Second Milestone
 
-For my second milestone I finished the electrical wiring, setup the GRBL 0.9 software and made my pen plotter draw sample images from existing GCode files. The pen plotter uses CNC mill software to turn images into coordiante points. It then moves the tip of the pen through the various coordinate points. A servo at the end lifts the pen when needed to create breaks in the image. Overall the function of the pen plotter has been fulfilled however the next step is to take my own images and convert them into GCode files for the Pen Plotter to draw. 
+For my second milestone, I finished the electrical wiring, set up the GRBL 0.9 software, and made my pen plotter draw sample images from existing GCode files. The pen plotter uses CNC mill software to turn images into coordinate points. It then moves the tip of the pen through the various coordinate points. A servo at the end lifts the pen when needed to create breaks in the image. Overall the function of the pen plotter has been fulfilled however the next step is to take my own images and convert them into GCode files for the Pen Plotter to draw. 
 
-The most significant challenge I overcame with milestone 2 was the software setup. The X-Code arduino uploader which added the GRBL software to the Arduino UnoMega needed Windows 10, however I used Mac. I tried to use bootcamp utility to get windows on my Mac but after trying 3 different solutions bootcamp ultimately didn't work. I get around this I used my mentors computer to upload the GRBL hex file to the Arduino. 
+The most significant challenge I overcame with milestone 2 was the software setup. The X-Code Arduino uploader which added the GRBL software to the Arduino UnoMega needed Windows 10, however, I used Mac. I tried to use Bootcamp utility to get Windows on my Mac but after trying 3 different solutions bootcamp ultimately didn't work. I get around this I used my mentor's computer to upload the GRBL hex file to the Arduino. 
 
-Another challenge was configuring the Universal GCode Platform (UGS) software to work with the Pen Plotter. I had to manually setup the software to recognize the Arduino and spent 4 hours troubleshooting to make the Aruino motors function from the software inputs. Through the series of firmware debugging I learned more about the software behind CNC machining and about Arduino. 
+Another challenge was configuring the Universal GCode Platform (UGS) software to work with the Pen Plotter. I had to manually set up the software to recognize the Arduino and spent 4 hours troubleshooting to make the Aruino motors function from the software inputs. Through the series of firmware debugging, I learned more about the software behind CNC machining and about Arduino. 
 
-Ultimately the machine works well and I am surpised by it's precision despite having only the X, Y axis on a UP/DOWN/LEFT/RIGHT control scheme. It is able to draw very precise curved lines and text with great accuracy. 
+Ultimately the machine works well and I am surprised by its precision despite having only the X, Y axis on a UP/DOWN/LEFT/RIGHT control scheme. It is able to draw very precise curved lines and text with great accuracy. 
 
 **Milestone 2 Machine Operation**
 
@@ -44,30 +54,37 @@ Ultimately the machine works well and I am surpised by it's precision despite ha
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0uyFmvGK-64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # First Milestone
-My first milestone required me to complete the hardware portion of the project. This included the frame,runners, belt system and motors. These parts make the pen-tip be able to freely move in the XY plane. To move in the X-Axis a singular motor runs while to move in the Y-Axis motors move in opposing directions. 
+My first milestone required me to complete the hardware portion of the project. This included the frame, runners, belt system, and motors. These parts make the pen tip able to freely move in the XY plane. To move in the X-Axis a singular motor runs while to move in the Y-Axis motors move in opposing directions. 
 
-One of the most significant obstalces with this assembly was the litany of small M3 and M2 screws as well as the precise direction and orientation needed of each part for the whole system to funciton. M2 screws proved especially tedious to install due to their miniscule size however I learned to use micro-tweazer and a magnetic screwdriver to easily install them. 
+One of the most significant obstacles with this assembly was the litany of small M3 and M2 screws as well as the precise direction and orientation needed for each part for the whole system to function. M2 screws proved especially tedious to install due to their minuscule size however I learned to use micro-tweazer and a magnetic screwdriver to easily install them. 
 
-The remaining portion of the project involves finishing the electrical wiring and firmware so that the pen plotter is functional. By Jun 15th I will finish the wiring and have the plotter drawing a simple image. By Jun 17th it will be able to create my own images for me. 
+The remaining portion of the project involves finishing the electrical wiring and firmware so that the pen plotter is functional. By Jun 15th I will finish the wiring and have the plotter drawing a simple image. By Jun 17th I will be able to create my own images for me. 
 
 **Milestone Video**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AOHoNZSm_1M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Schematics 
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
+
+Arduino Uno Mega 2236
+
+
 
 # Code
 
-For code we used the GRBL 0.9 software for CNC machines. This software is made to take .gcode files and make the CNC machine execute their command lists. 
+For code, I used the GRBL 0.9 software for CNC machines. This software is made to take .gcode files and make the CNC machine execute their command lists. 
 Main firmware: https://codeshare.io/ZJPjEN
 
 # Bill of Materials
 
-Seperated into different parts of the assembly
+Separated into different parts of the assembly
+
 
 
 | **Part** | **Note** | **Price** | **Link** |
+|:--:|:--:|:--:|:--:|
+| Doesbot A4 Working Area XY Plotter Kit | Main Kit That Design Is Based On | $139.99 | <a href="https://www.amazon.com/Linear-Motion-15-748-Hardened-Printer/"> Link </a> |
+Kit Contents
 |:--:|:--:|:--:|:--:|
 | 8mm polished rods 450mm (2) | Used to guide the pen-block on the X-Axis | $13.99 | <a href="https://www.amazon.com/Linear-Motion-15-748-Hardened-Printer/"> Link </a> |
 |:--:|:--:|:--:|:--:|
