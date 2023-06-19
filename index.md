@@ -68,7 +68,7 @@ The remaining portion of the project involves finishing the electrical wiring an
 
 Arduino Uno Mega 2236
 
-! [Schematicimage](Screen Shot 2023-06-19 at 9.11.48 AM.png)
+![Schematicimage](Screen Shot 2023-06-19 at 9.11.48 AM.png)
 
 
 
@@ -86,7 +86,6 @@ Separated into different parts of the assembly
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
 | Doesbot A4 Working Area XY Plotter Kit | Main Kit That Design Is Based On | $139.99 | <a href="https://www.amazon.com/Linear-Motion-15-748-Hardened-Printer/"> Link </a> |
-Kit Contents
 |:--:|:--:|:--:|:--:|
 | 8mm polished rods 450mm (2) | Used to guide the pen-block on the X-Axis | $13.99 | <a href="https://www.amazon.com/Linear-Motion-15-748-Hardened-Printer/"> Link </a> |
 |:--:|:--:|:--:|:--:|
