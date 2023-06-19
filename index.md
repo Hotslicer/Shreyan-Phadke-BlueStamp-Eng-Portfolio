@@ -68,6 +68,8 @@ The remaining portion of the project involves finishing the electrical wiring an
 
 Arduino Uno Mega 2236
 
+! [Schematicimage](Screen Shot 2023-06-19 at 9.11.48 AM.png)
+
 
 
 # Code
