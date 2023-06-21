@@ -1,11 +1,17 @@
 # CNC Pen Plotter
-Have you ever had a tedious school art project that your struggling to complete at 1:30am? Do you have terrible handwriting that only you can read? Well, fear not! Introducing the CNC Pen Plotter: A machine that uses a mechanism of runners and belts to control a pen on the XY plane using CNC software! To learn more about how the CNC pen plotter was designed and built as well as see it in action read more below! 
+Have you ever had a tedious school art project that your struggling to complete at 1:30 am? Do you have terrible handwriting that only you can read? Well, fear not! Introducing the CNC Pen Plotter: A machine that uses a mechanism of runners and belts to control a pen on the XY plane using CNC software! To learn more about how the CNC pen plotter was designed and built as well as see it in action read more below! 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Shreyan P | Cupertino High School | Mechanical Engineering | Incoming Senior
 
 ![Headstone Image](logo.svg)
+
+# Modification
+
+For my modification, my goal was to make my pen plotter able to switch colors. The concept was to be able to incorporate multiple colors into each image by switching the pen the machine was holding. The task was very daunting, requiring significant mechanical and firmware creation to support. 
+
+*Still being Developed*
   
 # Final Milestone. 
 
@@ -27,7 +33,9 @@ For my final Milestone, my goal was for the pen plotter to be able to draw my ow
 
 To create this final workflow the main challenge I faced was converting the vector .svg images into CNC coordinates. Almost all CNC compilers used commands for a separate motor to control the Z axis. However, my pen plotter only used a servo for Z-Axis. I tried several software, none of which worked. Finally, I found an extension for a vector drawing software called Inkscape, however, the extension was only supported by an older version of the software, version 0.92.5. This version was only compatible with Windows, and I had a Macbook. To solve this problem, I worked with my lead mentor to repair the BlueStamp Windows laptop by ordering new RAM and a battery. Finally, I was able to download Inkscape 0.92.5 and install the Ax4 Drawbot Extension for GCode conversion. 
 
-Another challenge I faced was making my pen plotter draw actual text. Converting text into .gcode works differently than converting images. There is a specific text library called "Hershey Fonts" which are purpose-built vector CNC fonts. I found a separate Inkscape extension called "Eggbot" which included Hershey fonts, however, it was incompatible with my outdated version of Inkscape. To counteract this issue I decompiled the extension and modified it to run on older Inkscape versions. With this extension in place my pen plotter could finally draw text. 
+Another challenge I faced was making my pen plotter draw actual text. Converting text into .gcode works differently than converting images. There is a specific text library called "Hershey Fonts" which are purpose-built vector CNC fonts. I found a separate Inkscape extension called "Eggbot" which included Hershey fonts, however, it was incompatible with my outdated version of Inkscape. To counteract this issue I decompiled the extension and modified it to run on older Inkscape versions. With this extension in place, my pen plotter could finally draw text. 
+
+
 
 I learned a lot through this process. First I learned about the mechanical aspects of CNC milling, and how a pen can move anywhere in the XY plane just using 2 motors. I also learned about the firmware behind CNC. I learned about .svg files and rasterization, which represent an image as a series of mathematical functions that a computer can understand. I also learned about .gcode files which turn the math functions from .svg files into a series of thousands of coordinate points that the Arduino executes. Finally, I learned about how .gcode files are sent to the machine: through the UGS software. 
 
@@ -59,7 +67,7 @@ Ultimately the machine works well and I am surprised by its precision despite ha
 # First Milestone
 My first milestone required me to complete the hardware portion of the project. This included the frame, runners, belt system, and motors. These parts make the pen tip able to freely move in the XY plane. To move in the X-Axis a singular motor runs while to move in the Y-Axis motors move in opposing directions. 
 
-One of the most significant obstacles with this assembly was the litany of small M3 and M2 screws as well as the precise direction and orientation needed for each part for the whole system to function. M2 screws proved especially tedious to install due to their minuscule size however I learned to use micro-tweazer and a magnetic screwdriver to easily install them. 
+One of the most significant obstacles with this assembly was the litany of small M3 and M2 screws as well as the precise direction and orientation needed for each part for the whole system to function. M2 screws proved especially tedious to install due to their minuscule size however I learned to use a micro-tweazer and a magnetic screwdriver to easily install them. 
 
 The remaining portion of the project involves finishing the electrical wiring and firmware so that the pen plotter is functional. By Jun 15th I will finish the wiring and have the plotter drawing a simple image. By Jun 17th I will be able to create my own images for me. 
 
@@ -71,7 +79,7 @@ The remaining portion of the project involves finishing the electrical wiring an
 
 Arduino Uno Mega 2236
 
-![Headstone Image](arduinomap.png)
+<img width="911" alt="arduinomap" src="https://github.com/Hotslicer/Shreyan-Phadke-BlueStamp-Eng-Portfolio/assets/63621669/afeb7b90-01e2-4f62-9bae-d885c1a539a5">
 
 
 # Code
