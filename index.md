@@ -9,17 +9,25 @@ Have you ever had a tedious school art project that your struggling to complete 
   
 # Final Milestone. 
 
-For my final Milestone, my goal was for the pen plotter to be able to draw my own images and be fully functioning. I considered this milestone complete when my plotter drew a complex image of Optimus Prime. The biggest challenge the final milestone presented was successfully converting images into .gcode files. This is a multi-step process:
+For my final Milestone, my goal was for the pen plotter to be able to draw my own images and text. I considered this milestone complete when my plotter drew a complex image of Optimus Prime as well as the first paragraph of the US Declaration of Independence. The biggest challenge the final milestone presented was successfully converting images and text into .gcode files. This is a multi-step process:
 
 1: Find an image, preferably line art/cartoon style
-2: Rasterize the image using https://picsvg.com/
-3: Upload the image to Inkscape v0.92.5
-4: Upload the DoesBotAX4 extension to Inkscape
-5: Convert the vector into a .gcode file for a servo-driven CNC
-6: Upload the .gcode file into UGS (Universal GCode Sender) and connect the machine
-7: Run UGS
 
-To create this final workflow the main challenge I faced was converting the vector .svg images into CNC coordinates. Almost all CNC compilers used commands for a separate motor to control the Z axis. However, my pen plotter only used a servo for Z-Axis. I tried several software, none of which worked. Finally, I found an extension for Inkscape, however, it was an older version of the software so I had to learn software rollback. 
+2: Rasterize the image using https://picsvg.com/
+
+3: Upload the image to Inkscape v0.92.5
+
+4: Upload the DoesBotAX4 extension to Inkscape
+
+5: Convert the vector into a .gcode file for a servo-driven CNC
+
+6: Upload the .gcode file into UGS (Universal GCode Sender) and connect the machine
+
+7: Run UGS (Universal GCode Sender)
+
+To create this final workflow the main challenge I faced was converting the vector .svg images into CNC coordinates. Almost all CNC compilers used commands for a separate motor to control the Z axis. However, my pen plotter only used a servo for Z-Axis. I tried several software, none of which worked. Finally, I found an extension for a vector drawing software called Inkscape, however, the extension was only supported by an older version of the software, version 0.92.5. This version was only compatible with Windows, and I had a Macbook. To solve this problem, I worked with my lead mentor to repair the BlueStamp Windows laptop by ordering new RAM and a battery. Finally, I was able to download Inkscape 0.92.5 and install the Ax4 Drawbot Extension for GCode conversion. 
+
+Another challenge I faced was making my pen plotter draw actual text. Converting text into .gcode works differently than converting images. There is a specific text library called "Hershey Fonts" which are purpose-built vector CNC fonts. I found a separate Inkscape extension called "Eggbot" which included Hershey fonts, however, it was incompatible with my outdated version of Inkscape. To counteract this issue I decompiled the extension and modified it to run on older Inkscape versions. With this extension in place my pen plotter could finally draw text. 
 
 I learned a lot through this process. First I learned about the mechanical aspects of CNC milling, and how a pen can move anywhere in the XY plane just using 2 motors. I also learned about the firmware behind CNC. I learned about .svg files and rasterization, which represent an image as a series of mathematical functions that a computer can understand. I also learned about .gcode files which turn the math functions from .svg files into a series of thousands of coordinate points that the Arduino executes. Finally, I learned about how .gcode files are sent to the machine: through the UGS software. 
 
@@ -29,7 +37,7 @@ I learned a lot through this process. First I learned about the mechanical aspec
 
 # Second Milestone
 
-For my second milestone, I finished the electrical wiring, set up the GRBL 0.9 software, and made my pen plotter draw sample images from existing GCode files. The pen plotter uses CNC mill software to turn images into coordinate points. It then moves the tip of the pen through the various coordinate points. A servo at the end lifts the pen when needed to create breaks in the image. Overall the function of the pen plotter has been fulfilled however the next step is to take my own images and convert them into GCode files for the Pen Plotter to draw. 
+For my second milestone, I finished the electrical wiring, set up the GRBL 0.9 software, and made my pen plotter draw sample images from existing GCode files. The pen plotter uses CNC mill software to turn images into coordinate points. It then moves the tip of the pen through the various coordinate points. A servo at the end lifts the pen when needed to create breaks in the image. With milestone #2 the function of the pen plotter has been fulfilled however the next step is to take my own images and convert them into GCode files for the Pen Plotter to draw. 
 
 The most significant challenge I overcame with milestone 2 was the software setup. The X-Code Arduino uploader which added the GRBL software to the Arduino UnoMega needed Windows 10, however, I used Mac. I tried to use Bootcamp utility to get Windows on my Mac but after trying 3 different solutions bootcamp ultimately didn't work. I get around this I used my mentor's computer to upload the GRBL hex file to the Arduino. 
 
