@@ -123,7 +123,7 @@ My starter project was a Simon Says game from a building kit.
 BOM
 
 | **Part** | **Description** |
-|:--:|:--:|:--:|:--:|
+|:--:|:--:|
 | Simon PCB Board | "Motherboard" of system. All components connect here |
 | Buzzer | Used to emit noises and sound effects | 
 | 0.1uF capacitator | Used to store electrical energy | 
@@ -137,7 +137,7 @@ BOM
 
 The assembly was completed in 45 minutes and taught me important concepts in soldering various holes and wire connections as well as different hardware such as Speakers, microcontrollers, and batteries. One challenge I faced was correctly aligning the LEDs with their polarity. 
 
-Video:
+# Video
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qXI4fr07pTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
