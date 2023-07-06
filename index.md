@@ -5,7 +5,8 @@ Have you ever had a tedious school art project that your struggling to complete 
 |:--:|:--:|:--:|:--:|
 | Shreyan P | Cupertino High School | Mechanical Engineering | Incoming Senior
 
-![Headstone Image](logo.svg)
+
+<img width="478" alt="Screen Shot 2023-07-06 at 9 00 28 AM" src="https://github.com/Hotslicer/Shreyan-Phadke-BlueStamp-Eng-Portfolio/assets/63621669/5dc1659c-4a09-4142-8be4-d7472cca6b77">
 
 # Modification
 
