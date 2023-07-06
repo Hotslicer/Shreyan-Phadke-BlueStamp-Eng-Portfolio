@@ -122,7 +122,7 @@ My starter project was a Simon Says game from a building kit.
 
 BOM
 
-| **Part** | **Usage** |
+| **Part** | **Description** |
 |:--:|:--:|:--:|:--:|
 | Simon PCB Board | "Motherboard" of system. All components connect here |
 |:--:|:--:|:--:|:--:|
