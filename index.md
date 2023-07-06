@@ -125,25 +125,15 @@ BOM
 | **Part** | **Description** |
 |:--:|:--:|:--:|:--:|
 | Simon PCB Board | "Motherboard" of system. All components connect here |
-|:--:|:--:|:--:|:--:|
 | Buzzer | Used to emit noises and sound effects | 
-|:--:|:--:|:--:|:--:|
 | 0.1uF capacitator | Used to store electrical energy | 
-|:--:|:--:|:--:|:--:|
 | 10k Resistor (2) | Reduces voltage by 10,000 ohms | 
-|:--:|:--:|:--:|:--:|
 | LEDs (4) | Emits light used in system operation | 
-|:--:|:--:|:--:|:--:|
 | Slide Switch (2) | Used to turn the machine on/off and toggle sound | 
-|:--:|:--:|:--:|:--:|
 | Battery Clips (2) | Cathode + Anode used to deliver battery charge | 
-|:--:|:--:|:--:|:--:|
 | AA Batteries (2) | Power Source of the System | 
-|:--:|:--:|:--:|:--:|
 | ATMega Microcontroller | Conducts system operations | 
-|:--:|:--:|:--:|:--:|
 | Standoffers & Screws (4) | Used to mount the button board to the PCB | 
-|:--:|:--:|:--:|:--:|
 
 The assembly was completed in 45 minutes and taught me important concepts in soldering various holes and wire connections as well as different hardware such as Speakers, microcontrollers, and batteries. One challenge I faced was correctly aligning the LEDs with their polarity. 
 
