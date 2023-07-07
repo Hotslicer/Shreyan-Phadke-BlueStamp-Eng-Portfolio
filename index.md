@@ -18,6 +18,7 @@ For my modification, my goal was to make my pen plotter able to switch colors. T
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/htjaKcD7Y0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+
 For my final Milestone, my goal was for the pen plotter to be able to draw my own images and text. I considered this milestone complete when my plotter drew a complex image of Optimus Prime as well as the first paragraph of the US Declaration of Independence. The biggest challenge the final milestone presented was successfully converting images and text into .gcode files. This is a multi-step process:
 
 1: Find an image, preferably line art/cartoon style
@@ -46,6 +47,7 @@ I learned a lot through this process. First I learned about the mechanical aspec
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0uyFmvGK-64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+
 For my second milestone, I finished the electrical wiring, set up the GRBL 0.9 software, and made my pen plotter draw sample images from existing GCode files. The pen plotter uses CNC mill software to turn images into coordinate points. It then moves the tip of the pen through the various coordinate points. A servo at the end lifts the pen when needed to create breaks in the image. With milestone #2 the function of the pen plotter has been fulfilled however the next step is to take my own images and convert them into GCode files for the Pen Plotter to draw. 
 
 The most significant challenge I overcame with milestone 2 was the software setup. The X-Code Arduino uploader which added the GRBL software to the Arduino UnoMega needed Windows 10, however, I used Mac. I tried to use Bootcamp utility to get Windows on my Mac but after trying 3 different solutions bootcamp ultimately didn't work. I get around this I used my mentor's computer to upload the GRBL hex file to the Arduino. 
@@ -62,6 +64,7 @@ Ultimately the machine works well and I am surprised by its precision despite ha
 # First Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AOHoNZSm_1M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 My first milestone required me to complete the hardware portion of the project. This included the frame, runners, belt system, and motors. These parts make the pen tip able to freely move in the XY plane. To move in the X-Axis a singular motor runs while to move in the Y-Axis motors move in opposing directions. 
 
@@ -113,6 +116,7 @@ Separated into different parts of the assembly
 # Starter Project
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qXI4fr07pTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 My starter project was a Simon Says game from a building kit. 
 
