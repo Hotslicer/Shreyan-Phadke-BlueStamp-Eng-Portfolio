@@ -16,6 +16,8 @@ For my modification, my goal was to make my pen plotter able to switch colors. T
   
 # Final Milestone. 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/htjaKcD7Y0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 For my final Milestone, my goal was for the pen plotter to be able to draw my own images and text. I considered this milestone complete when my plotter drew a complex image of Optimus Prime as well as the first paragraph of the US Declaration of Independence. The biggest challenge the final milestone presented was successfully converting images and text into .gcode files. This is a multi-step process:
 
 1: Find an image, preferably line art/cartoon style
@@ -37,14 +39,12 @@ To create this final workflow the main challenge I faced was converting the vect
 Another challenge I faced was making my pen plotter draw actual text. Converting text into .gcode works differently than converting images. There is a specific text library called "Hershey Fonts" which are purpose-built vector CNC fonts. I found a separate Inkscape extension called "Eggbot" which included Hershey fonts, however, it was incompatible with my outdated version of Inkscape. To counteract this issue I decompiled the extension and modified it to run on older Inkscape versions. With this extension in place, my pen plotter could finally draw text. 
 
 
-
 I learned a lot through this process. First I learned about the mechanical aspects of CNC milling, and how a pen can move anywhere in the XY plane just using 2 motors. I also learned about the firmware behind CNC. I learned about .svg files and rasterization, which represent an image as a series of mathematical functions that a computer can understand. I also learned about .gcode files which turn the math functions from .svg files into a series of thousands of coordinate points that the Arduino executes. Finally, I learned about how .gcode files are sent to the machine: through the UGS software. 
 
-# Milestone Video
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/htjaKcD7Y0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Second Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0uyFmvGK-64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 For my second milestone, I finished the electrical wiring, set up the GRBL 0.9 software, and made my pen plotter draw sample images from existing GCode files. The pen plotter uses CNC mill software to turn images into coordinate points. It then moves the tip of the pen through the various coordinate points. A servo at the end lifts the pen when needed to create breaks in the image. With milestone #2 the function of the pen plotter has been fulfilled however the next step is to take my own images and convert them into GCode files for the Pen Plotter to draw. 
 
@@ -59,22 +59,16 @@ Ultimately the machine works well and I am surprised by its precision despite ha
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7r2xqhQgGDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
-
-**Milestone 2 Video**
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0uyFmvGK-64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 # First Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AOHoNZSm_1M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 My first milestone required me to complete the hardware portion of the project. This included the frame, runners, belt system, and motors. These parts make the pen tip able to freely move in the XY plane. To move in the X-Axis a singular motor runs while to move in the Y-Axis motors move in opposing directions. 
 
 One of the most significant obstacles with this assembly was the litany of small M3 and M2 screws as well as the precise direction and orientation needed for each part for the whole system to function. M2 screws proved especially tedious to install due to their minuscule size however I learned to use a micro-tweazer and a magnetic screwdriver to easily install them. 
 
 The remaining portion of the project involves finishing the electrical wiring and firmware so that the pen plotter is functional. By Jun 15th I will finish the wiring and have the plotter drawing a simple image. By Jun 17th I will be able to create my own images for me. 
 
-**Milestone Video**
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AOHoNZSm_1M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Schematics 
 
@@ -118,6 +112,8 @@ Separated into different parts of the assembly
 
 # Starter Project
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qXI4fr07pTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 My starter project was a Simon Says game from a building kit. 
 
 BOM
@@ -137,9 +133,6 @@ BOM
 
 The assembly was completed in 45 minutes and taught me important concepts in soldering various holes and wire connections as well as different hardware such as Speakers, microcontrollers, and batteries. One challenge I faced was correctly aligning the LEDs with their polarity. 
 
-**Video**
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qXI4fr07pTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Thank you for reading
 
