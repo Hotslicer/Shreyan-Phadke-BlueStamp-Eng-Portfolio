@@ -10,7 +10,16 @@ Have you ever had a tedious school art project that your struggling to complete 
 
 # Modification
 
-For my modification, my goal was to make my pen plotter able to switch colors. The concept was to be able to incorporate multiple colors into each image by switching the pen the machine was holding. The task was very daunting, requiring significant mechanical and firmware creation to support. 
+For my modification, my goal was to make my pen plotter able to switch colors. The concept was to incorporate multiple colors into each image by switching the pen the machine was holding. The basis of the modification was an existing color-switching pen plotter design that I heavily modified. It involved a new pen holder mechanism that featured a motor and servo. The motor could oscillate the pen up and down giving it a Z axis while the servo could let the pen out of the pen holder while switching pens. A pen rack would also be added in front of the machine for it to be able to choose between 11 different pens. 
+
+To build this modification I 3d printed several files and ordered a new motor, servo, and bearings for the updated pen holder. I also created a Pen rack and wooden supports that attached to the machine. The pen rack was placed at the limit of the machine's X-axis reach to maximize the drawing surface. I encountered several challenges while building such as complicated screws and fittings and difficult wiring. 
+
+Another significant problem that occurred was the limitations of the Arduino Uno CNC that came with the standard pen plotter. The Arduino was only designed for 2 axes, X and Y, and didn't have a PWM slot for the Z-axis motor on the modification. To solve this I ordered a new Arduino as well as a dedicated CNC shield for it. This new CNC shield supported all 3 axes. After transferring all the connections to the new CNC shield another issue I encountered was the control scheme. The CNC shield was designed for a simple 1 Motor X, 1 motor Y machine however my machine used a dual motor scheme, with motors moving in opposite directions to control X and Y. To solve this I had to manually edit the Arduino firmware. 
+
+With these changes the machine could draw like a normal pen plotter once again, drawing images and text with good resolution. 
+
+Following this the next goal was to add the color switching software to the machine. For this the machine needed coordinates that corresponded to each color. 
+
 
 *Still being Developed*
   
