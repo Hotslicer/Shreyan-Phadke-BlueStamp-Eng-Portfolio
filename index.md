@@ -18,7 +18,8 @@ Another significant problem that occurred was the limitations of the Arduino Uno
 
 With these changes the machine could draw like a normal pen plotter once again, drawing images and text with good resolution. 
 
-Following this the next goal was to add the color switching software to the machine. For this the machine needed coordinates that corresponded to each color. 
+Following this, the next goal was to add color-switching software to the machine. To do this I am using GRBL plotter software and its "tool change" control scheme. Using the limit switches I added to the X, Y, and Z axis the machine could get absolute machine coordinates depending on its distance from the limit switches. Using these coordinates I could assign a coordinate value to each of the 11 colors 
+
 
 
 *Still being Developed*
