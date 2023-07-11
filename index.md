@@ -18,18 +18,14 @@ Another significant problem that occurred was the limitations of the Arduino Uno
 
 With these changes the machine could draw like a normal pen plotter once again, drawing images and text with good resolution. 
 
-Following this, the next goal was to add color-switching software to the machine. To do this I am using GRBL plotter software and its "tool change" control scheme. Using the limit switches I added to the X, Y, and Z axis the machine could get absolute machine coordinates depending on its distance from the limit switches. Using these coordinates I could assign a coordinate value to each of the 11 colors 
-
-
-
-*Still being Developed*
+Following this, the next goal was to add color-switching software to the machine. To do this I am using GRBL plotter software and its "tool change" control scheme. Using the limit switches I added to the X, Y, and Z axis the machine could get absolute machine coordinates depending on its distance from the limit switches. Using these coordinates I could assign a coordinate value to each of the 11 colors. Unfortunately, I did not finish the firmware before the sessions ended due to a lot of custom coding and firmware being needed which would take a lot more time. However, the hardware is capable of working with working firmware.
   
 # Final Milestone. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/htjaKcD7Y0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
-For my final Milestone, my goal was for the pen plotter to be able to draw my own images and text. I considered this milestone complete when my plotter drew a complex image of Optimus Prime as well as the first paragraph of the US Declaration of Independence. The biggest challenge the final milestone presented was successfully converting images and text into .gcode files. This is a multi-step process:
+For my final Milestone, my goal was for the pen plotter to be able to draw my personal images and text. I considered this milestone complete when my plotter drew a complex image of Optimus Prime as well as the first paragraph of the US Declaration of Independence. The biggest challenge the final milestone presented was successfully converting images and text into .gcode files. This is a multi-step process:
 
 1: Find an image, preferably line art/cartoon style
 
@@ -128,7 +124,7 @@ Separated into different parts of the assembly
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qXI4fr07pTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
-My starter project was a Simon Says game from a building kit. 
+A fun game to play when boredom is quickly taking over. Test your memory and reaction speed with this simple Simon Says Game! 
 
 BOM
 
