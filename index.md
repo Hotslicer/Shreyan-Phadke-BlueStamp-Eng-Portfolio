@@ -1,11 +1,6 @@
 # CNC Pen Plotter
 Have you ever had a tedious school art project that your struggling to complete at 1:30 am? Do you have terrible handwriting that only you can read? Well, fear not! Introducing the CNC Pen Plotter: A machine that uses a mechanism of runners and belts to control a pen on the XY plane using CNC software! To learn more about how the CNC pen plotter was designed and built as well as see it in action read more below! 
 
-| **Engineer** | **School** | **Area of Interest** | **Grade** |
-|:--:|:--:|:--:|:--:|
-| Shreyan P | Cupertino High School | Mechanical Engineering | Incoming Senior
-
-
 <img width="478" alt="Screen Shot 2023-07-06 at 9 00 28 AM" src="https://github.com/Hotslicer/Shreyan-Phadke-BlueStamp-Eng-Portfolio/assets/63621669/5dc1659c-4a09-4142-8be4-d7472cca6b77">
 
 # Modification
